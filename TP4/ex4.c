@@ -7,7 +7,10 @@ int main() {
     int choix;
     int lignes;
     int colonnes;
+    int profondeur;
     int **image;
+    int *histogramme;
+
     while (1) {
         printf("Menu des opérations sur les images :\n");
         printf("1) Création d'une image avec des valeurs aléatoires\n");
@@ -23,7 +26,6 @@ int main() {
         if( choix == 1){ 
             printf("Entrez les dimensions de l'image (nbr de lignes puis de colonnes) : ");
             scanf("%d%d",&lignes ,&colonnes);
-            int profondeur;
             printf("Entrez la profondeur de bits de l'image : ");
             scanf("%d", &profondeur);
 
@@ -44,7 +46,6 @@ int main() {
         if( choix == 2){ 
             printf("Entrez les dimensions de l'image (nbr de lignes puis de colonnes) : ");
             scanf("%d%d",&lignes ,&colonnes);
-            int profondeur;
             printf("Entrez la profondeur de bits de l'image : ");
             scanf("%d", &profondeur);
 
@@ -75,13 +76,55 @@ int main() {
             }
         }
         if( choix == 4){ 
+            if(lignes>0){
+                int nvlLignes, nvlColonnes;
+                printf("Entrez les nouvelles dimensiosn de l'image (lignes puis colonnes ): ");
+                scanf("%d%d", &nvlLignes, &nvlColonnes);
 
+                image = (int**) realloc(image, nvlLignes * sizeof(int*));
+                if (image == NULL) exit(1);
+
+                for(int i=0; i<nvlLignes; i++){ 
+                    image[i] = (int*) realloc(image[i],nvlColonnes * sizeof(int));
+                    if (image[i] == NULL) exit(1);
+                }
+                for(int i=0 ; i<lignes;i++){ 
+                    for(int j=colonnes ; j<nvlColonnes;j++){ 
+                        image[i][j]=0;
+                    }
+                }
+                for(int i=lignes ; i< nvlLignes ; i++){ 
+                    for(int j=0; j< nvlColonnes;j++){ 
+                        image[i][j]=0;
+                    }
+                }
+
+                lignes=nvlLignes;
+                colonnes=nvlColonnes;
+            } 
         }
         if( choix == 5){ 
+            int taille = (1 << profondeur);
+            histogramme =(int *)malloc(taille * sizeof(int));
 
+            for(int i=0; i<lignes; i++){ 
+                for(int j=0; j<colonnes; j++){ 
+                    histogramme[image[i][j]]++;
+                }
+            }
+
+            for(int i=0; i<taille;i++){
+                printf("#pixels de valeur %d : %d\n", i, histogramme[i]);
+            }
+
+            printf("nombre de pixels dans l'image = %d \n",lignes*colonnes);
         }
         if( choix == 6){ 
-
+            free(image);
+            lignes=0;
+            colonnes=0;
+            profondeur=0;
+            free(histogramme);
         }
         if( choix == 7){ 
             free(image);
@@ -96,5 +139,3 @@ int main() {
 
     exit(0);
 }
-
-
