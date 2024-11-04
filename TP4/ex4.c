@@ -93,9 +93,13 @@ int main() {
 
             image = (int**) realloc(image, nvlLignes * sizeof(int*));
             if (image == NULL) exit(1);
-
-            for(int i=0; i<nvlLignes; i++){ 
+            
+            for(int i=0; i<lignes; i++){ 
                 image[i] = (int*) realloc(image[i],nvlColonnes * sizeof(int));
+                if (image[i] == NULL) exit(1);
+            }
+            for(int i=lignes; i<nvlLignes; i++){ 
+                image[i] = (int*) malloc(nvlColonnes * sizeof(int));
                 if (image[i] == NULL) exit(1);
             }
             
