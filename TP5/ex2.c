@@ -13,10 +13,13 @@ int main(int argc, char *argv[]){
     int absent_count=0;
     char ligne[TAILLE];
 
+    printf("\nEntrez un mot : " );
     while(fgets(ligne, TAILLE, stdin)!=NULL){
 
+        
+
         ligne[strlen(ligne)-1] = '\0'; // pr retrier \n si y'en a
-        printf("\nle mot lu est %s (longueur = %ld)\n", ligne, strlen(ligne));
+        printf("\nle mot lu est %s (longueur = %ld) et il est ... ", ligne, strlen(ligne));
 
         int present=0;
         for(int i=1; i<argc; i++){
@@ -30,10 +33,11 @@ int main(int argc, char *argv[]){
             absent_count++;
         }
         else{ 
-            printf("présent\n");
-            printf("il ya eu %d mots absents\n", absent_count);
+            printf("présent !!! \n");
+            printf("il ya eu %d mots absents\n\n", absent_count);
             exit(0);
         }
+        printf("\nEntrez un mot : " );
     }
     exit(1);
 }
