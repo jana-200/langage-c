@@ -26,6 +26,11 @@ int main(int argc, char *argv[]){
         printf("%s ", maj[i]);
         printf("\n");
     }
+    //liberation de la memoire
+    for(int i=0;i<argc-1;i++){
+        free(maj[i]);
+    }
+    free(maj);
 
     printf("\n");
 }
