@@ -15,11 +15,10 @@ int main(int argc, char *argv[]){
 
         if (maj[i - 1] == NULL) exit(1);
 
-        for(size_t j=0 ;j<len;j++){ 
+        for(size_t j=0 ;j<len+1;j++){ 
             maj[i-1][j]=toupper(argv[i][j]);
         }
 
-        maj[i - 1][len] = '\0';
     }
 
     for (int i = 0; i < argc - 1; i++) {
