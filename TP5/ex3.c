@@ -11,13 +11,15 @@ int main() {
 
     while (fgets(ligne, TAILLE, stdin) != NULL) {
         int trouve = 0;
-
+        
+        ligne[strlen(ligne)-1]='\0';
+         
         for (int i = 0; i < nb_coffres; i++) {
             if (strncmp(coffres[i], ligne, 5) == 0) {
                 ligne[strlen(ligne)-1]='\0';
                 coffres[i] = realloc(coffres[i], (strlen(coffres[i]) + strlen(ligne+5) +1) * sizeof(char));
                 if (coffres[i] == NULL) exit(1);
-                strcat(coffres[i], ligne+6);
+                strcat(coffres[i], ligne+5);
                 trouve = 1;
                 break;
             }
