@@ -10,5 +10,5 @@ int main(){
     for(int i=2 ; i <= x ; i++){ 
         fact*=i;
     }
-    printf("la factorielle de %d est %.0f\n", x, fact);
+    printf("la factorielle de %d est %.2f\n", x, fact);
 }
