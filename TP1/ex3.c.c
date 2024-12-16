@@ -6,7 +6,7 @@ int main(){
     printf("Entrez un entier dont vous voulez avoir al factorielle : \n");
     scanf("%d", &x);
 
-    int fact=1;
+    float fact=1;
     for(int i=2 ; i <= x ; i++){ 
         fact*=i;
     }
