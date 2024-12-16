@@ -3,7 +3,7 @@
 
 int main(){ 
     int x;
-    printf("Entrez un entier dont vous voulez avoir al factorielle : \n");
+    printf("Entrez un entier dont vous voulez avoir la factorielle : \n");
     scanf("%d", &x);
 
     float fact=1;
