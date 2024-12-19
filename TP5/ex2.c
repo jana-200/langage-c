@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TAILLE 256
+#define TAILLE 27
 
 int main(int argc, char *argv[]){
 
@@ -13,11 +13,10 @@ int main(int argc, char *argv[]){
     int absent_count=0;
     char ligne[TAILLE];
 
-    printf("\nEntrez un mot : " );
+    printf("\nEntrez un mot (ou CTRL-D pour arrêter): " );
     while(fgets(ligne, TAILLE, stdin)!=NULL){
 
         
-
         ligne[strlen(ligne)-1] = '\0'; // pr retrier \n si y'en a
         printf("\nle mot lu est %s (longueur = %ld) et il est ... ", ligne, strlen(ligne));
 
@@ -34,10 +33,12 @@ int main(int argc, char *argv[]){
         }
         else{ 
             printf("présent !!! \n");
-            printf("il ya eu %d mots absents\n\n", absent_count);
-            exit(0);
         }
-        printf("\nEntrez un mot : " );
+
+        printf("\nEntrez un mot (ou CTRL-D pour arrêter): " );
+        
     }
-    exit(1);
+
+    printf("\nLe programme prend fin.\nIl ya eu %d mots absents\n\n", absent_count);
+    exit(0);
 }
