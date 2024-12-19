@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define TAILLE 27
+#define TAILLE 27+2
 
 int main(int argc, char *argv[]){
 
@@ -15,6 +15,15 @@ int main(int argc, char *argv[]){
 
     printf("\nEntrez un mot (ou CTRL-D pour arrêter): " );
     while(fgets(ligne, TAILLE, stdin)!=NULL){
+
+        if (ligne[strlen(ligne)-1] != '\n') {
+        	printf("Erreur: le mot entré est trop long.\n");
+
+        	// vidage du buffer stdin
+        	while (fgets(ligne, TAILLE, stdin) && ligne[strlen(ligne)-1] != '\n') ;
+            
+        	continue;
+        }  
 
         
         ligne[strlen(ligne)-1] = '\0'; // pr retrier \n si y'en a
