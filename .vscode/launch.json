@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": ".",
-      "program": "build/Debug/outDebug",
+      "cwd": "c:/Users/kamal/Documents/HE Vinci/BLOC2/Q1/langage-c/exam2024",
+      "program": "c:/Users/kamal/Documents/HE Vinci/BLOC2/Q1/langage-c/exam2024/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
