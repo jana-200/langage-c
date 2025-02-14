@@ -6,6 +6,9 @@
 #include "./Morse/cryptMorse.h"
 #include "utils_v1.h" 
 
+
+// généré avec chatgpt
+
 void menu() {
     printf("\n=== Secret Agent ===\n");
     printf("1. Cryptage\n");
